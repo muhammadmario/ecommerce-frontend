@@ -64,25 +64,30 @@ export const refresh = createAsyncThunk(
       });
       return response.data.accessToken;
     } catch (error) {
-      console.log(error);
-      console.log("pindah ke login");
+      // console.log(error);
+      // console.log("pindah ke login");
       rejectWithValue(error.response.data);
       return navigate("/login");
     }
   }
 );
 
-// export const getAllUser = createAsyncThunk(
-//   "auth/getalluser",
-//   async ({ token }, { rejectWithValue }) => {
-//     try {
-//       const response = await axios.get("http://localhost:5000/user");
-//       return response.data;
-//     } catch (error) {
-//       return rejectWithValue(error.response.data.msg);
-//     }
-//   }
-// );
+export const logout = createAsyncThunk(
+  "auth/logout",
+  async (navigate, { rejectWithValue }) => {
+    try {
+      const response = await axios.delete("http://localhost:5000/logout", {
+        withCredentials: true,
+      });
+      await navigate("/login");
+      return response.data;
+    } catch (error) {
+      // console.log(error);
+      // console.log("pindah ke login");
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -138,6 +143,21 @@ export const authSlice = createSlice({
       state.isError = null;
     },
     [refresh.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.isError = action.payload;
+    },
+
+    // logout
+    [logout.pending]: (state) => {
+      state.isLoading = true;
+      state.isError = null;
+    },
+    [logout.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.token = null;
+      state.isError = null;
+    },
+    [logout.rejected]: (state, action) => {
       state.isLoading = false;
       state.isError = action.payload;
     },

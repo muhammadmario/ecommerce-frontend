@@ -1,9 +1,34 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { Link, useNavigate } from "react-router-dom";
 import { CgMenuRight, CgClose, CgSearch } from "react-icons/cg";
+import jwt_decode from "jwt-decode";
+import { logout } from "../features/authSlice";
 
 function Navbar() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [user, setUser] = useState(null);
   const [sidebarMobile, setSidebarMobile] = useState(false);
+
+  const { isLoading, isError, token } = useSelector((state) => state.auth);
+
+  const handleLogout = async () => {
+    dispatch(logout(navigate));
+  };
+
+  const decodeToken = async () => {
+    const response = await jwt_decode(token);
+    setUser(response);
+  };
+
+  useEffect(() => {
+    decodeToken();
+  }, [token]);
+
+  console.log(user);
+
   return (
     <nav className="w-full bg-blue-500 h-16 flex box-border justify-between px-2 md:px-16 items-center text-white overflow-x-hidden">
       <h1 className="font-bold">Commerce</h1>
@@ -32,18 +57,29 @@ function Navbar() {
           Makanan
         </li>
         <div className="flex justify-center items-center gap-2">
-          <Link
-            to="/login"
-            className="w-24 bg-blue-800 h-10 rounded-lg flex justify-center items-center"
-          >
-            Login
-          </Link>
-          <Link
-            to="/register"
+          {!user && (
+            <>
+              <Link
+                to="/login"
+                className="w-24 bg-blue-800 h-10 rounded-lg flex justify-center items-center"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="w-24 border h-10 rounded-lg flex justify-center items-center"
+              >
+                Register
+              </Link>
+            </>
+          )}
+          <button
+            type="button"
+            onClick={handleLogout}
             className="w-24 border h-10 rounded-lg flex justify-center items-center"
           >
-            Register
-          </Link>
+            Logout
+          </button>
         </div>
       </ul>
 
