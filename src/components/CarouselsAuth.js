@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import TestimoniCard from "./TestimoniCard";
 
-function Carousels() {
+function CarouselsAuth() {
   return (
     <>
       <Carousel
@@ -16,16 +16,16 @@ function Carousels() {
         className="w-full box-border"
       >
         <TestimoniCard
-          name={"Mario"}
+          name="Mario"
           desc="Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search"
         />
         <TestimoniCard
-          name={"Mesis"}
+          name="Mesis"
           desc="lorem ipsum dolor si amtasas sasa lasja asasa lorem ipsum dolor si
         amtasas sasa lasja asasa lorem i"
         />
         <TestimoniCard
-          name={"Narutoh"}
+          name="Narutoh"
           desc="simply dummy text of the printing and typesetting industry."
         />
       </Carousel>
@@ -33,4 +33,4 @@ function Carousels() {
   );
 }
 
-export default Carousels;
+export default CarouselsAuth;

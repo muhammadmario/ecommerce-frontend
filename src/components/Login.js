@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../features/authSlice";
-import Carousels from "./Carousels";
 import ReactLoading from "react-loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import CarouselsAuth from "./CarouselsAuth";
 
 function Login() {
   const dispatch = useDispatch();
@@ -54,7 +54,7 @@ function Login() {
           </p>
         </div>
         <div className="h-40 flex w-full mb-7">
-          <Carousels />
+          <CarouselsAuth />
         </div>
       </div>
       <div className="w-full  bg-white h-full flex justify-center items-center md:w-7/12 lg:w-8/12">

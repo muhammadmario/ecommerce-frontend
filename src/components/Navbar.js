@@ -27,14 +27,12 @@ function Navbar() {
     decodeToken();
   }, [token]);
 
-  console.log(user);
-
   return (
-    <nav className="w-full bg-blue-500 h-16 flex box-border justify-between px-2 md:px-16 items-center text-white overflow-x-hidden">
+    <nav className="w-full bg-[#9F8772] h-16 flex box-border justify-between px-2 md:px-16 items-center text-white overflow-x-hidden">
       <h1 className="font-bold">Commerce</h1>
 
       <ul
-        className={`fixed top-0 right-0 w-3/4 h-screen gap-3 pt-16 bg-blue-500 md:static md:w-fit md:h-full md:flex md:items-center md:gap-10 md:pt-0 transition ${
+        className={`fixed bg-[#9F8772]  top-0 right-0 w-3/4 h-screen gap-3 pt-16  md:static md:w-fit md:h-full md:flex md:items-center md:gap-10 md:pt-0 transition ${
           sidebarMobile ? "translate-x-0" : "translate-x-full md:translate-x-0"
         }`}
       >

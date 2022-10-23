@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { register, resetError } from "../features/authSlice";
-import Carousels from "./Carousels";
 import ReactLoading from "react-loading";
+import CarouselsAuth from "./CarouselsAuth";
 
 function Register() {
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ function Register() {
           </p>
         </div>
         <div className="h-40 flex w-full mb-7">
-          <Carousels />
+          <CarouselsAuth />
         </div>
       </div>
       <div className="w-full  bg-white h-full flex justify-center items-center md:w-7/12 lg:w-8/12">

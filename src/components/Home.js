@@ -3,43 +3,124 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axiosJWT from "../app/api/axiosJWT";
+import Banner from "./Banner";
+import CardProduct from "./CardProduct";
+import CarouselsHome from "./CarouselsHome";
+import HeroCard from "./HeroCard";
+import clothes from "../assets/img/clothes.jpg";
+import kemeja from "../assets/img/kemeja.jpg";
+import jaket from "../assets/img/jaket.jpg";
+import kaos from "../assets/img/kaos.jpg";
+import hat1 from "../assets/img/hat1.jpg";
+import hat2 from "../assets/img/hat2.jpg";
 
 function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [users, setUsers] = useState();
+
   const [error, setError] = useState(null);
   const { token } = useSelector((state) => state.auth);
-
-  const handleClick = async () => {
-    try {
-      // console.log("aku jalan");
-      const response = await axiosJWT.get("users", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      // console.log(response);
-      setUsers(response.data);
-    } catch (error) {
-      console.log(error);
-      setError(error.response.data);
-    }
-  };
 
   useEffect(() => {
     error && navigate("/login");
   }, [error]);
 
+  // const handleClick = async () => {
+  //   try {
+  //     // console.log("aku jalan");
+  //     const response = await axiosJWT.get("users", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     });
+  //     // console.log(response);
+  //     setUsers(response.data);
+  //   } catch (error) {
+  //     console.log(error);
+  //     setError(error.response.data);
+  //   }
+  // };
+
   return (
-    <div>
-      Home
-      <button className="bg-lime-400" onClick={() => handleClick()}>
-        users
-      </button>
-      {users && users.map((user) => <p key={user.id}>{user.name}</p>)}
-      {error && <p>{error}</p>}
-    </div>
+    <section className="w-full min-h-screen md:px-16 flex flex-col ">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
+        <Banner />
+        <CarouselsHome />
+        <HeroCard />
+        {/* <div className="bg-red-500 rounded-2xl shadow-xl min-h-[50px] col-span-2"></div>
+        <div className="bg-blue-500 rounded-2xl shadow-xl min-h-[50px] row-span-3"></div>
+        <div className="bg-green-500 rounded-2xl shadow-xl min-h-[50px] col-span-2"></div> */}
+      </div>
+
+      <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-2">
+        <CardProduct
+          image={clothes}
+          title="green goblin"
+          desc="loremana mada soasa lowqw asasa"
+          price="800.000"
+        />
+        <CardProduct
+          image={kemeja}
+          title="Kemeja bitu"
+          desc="loremana mada soasa lowqw asasa"
+          price="1.800.000"
+        />
+        <CardProduct
+          image={kaos}
+          title="kaos pwedie"
+          desc="loremana mada soasa lowqw asasa"
+          price="500.000"
+        />
+        <CardProduct
+          image={jaket}
+          title="jaket pwedie"
+          desc="loremana mada soasa lowqw asasa"
+          price="1.200.000"
+        />
+        <CardProduct
+          image={hat1}
+          title="Kemeja bitu"
+          desc="loremana mada soasa lowqw asasa"
+          price="1.800.000"
+        />
+        <CardProduct
+          image={kaos}
+          title="kaos pwedie"
+          desc="loremana mada soasa lowqw asasa"
+          price="500.000"
+        />
+        <CardProduct
+          image={jaket}
+          title="jaket pwedie"
+          desc="loremana mada soasa lowqw asasa"
+          price="1.200.000"
+        />
+        <CardProduct
+          image={jaket}
+          title="jaket pwedie"
+          desc="loremana mada soasa lowqw asasa"
+          price="1.200.000"
+        />
+        <CardProduct
+          image={hat2}
+          title="Kemeja bitu"
+          desc="loremana mada soasa lowqw asasa"
+          price="1.800.000"
+        />
+        <CardProduct
+          image={jaket}
+          title="jaket pwedie"
+          desc="loremana mada soasa lowqw asasa"
+          price="1.200.000"
+        />
+        <CardProduct
+          image={kemeja}
+          title="Kemeja bitu"
+          desc="loremana mada soasa lowqw asasa"
+          price="1.800.000"
+        />
+      </div>
+    </section>
   );
 }
 

@@ -6,7 +6,7 @@ function Layout() {
   return (
     <>
       <Navbar />
-      <main className="App">
+      <main className="App bg-[#EDE4E0]">
         <Outlet />
       </main>
     </>
