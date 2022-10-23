@@ -40,7 +40,7 @@ function Login() {
 
   return (
     <section className="w-full h-screen flex md:p-3">
-      <div className="hidden md:flex md:w-5/12 md:bg-blue-600 md:h-full md:box-border md:text-white md:rounded-3xl md:flex-col md:px-6 md:py-6 lg:w-4/12">
+      <div className="hidden md:flex md:w-5/12 bg-[#9F8772] md:h-full md:box-border md:text-white md:rounded-3xl md:flex-col md:px-6 md:py-6 lg:w-4/12">
         <div className="h-12 flex items-center">
           <h1 className="font-bold">Commerce</h1>
         </div>
@@ -92,7 +92,7 @@ function Login() {
             />
             <button
               type="submit"
-              className="bg-blue-500 h-12 text-white rounded mt-2 w-full md:w-1/2"
+              className="bg-[#9F8772] h-12 text-white rounded mt-2 w-full md:w-1/2 hover:bg-[#665A48]"
               disabled={isLoading}
             >
               Login

@@ -3,7 +3,7 @@ import banner from "../assets/img/banner.png";
 
 function Banner() {
   return (
-    <div className="w-full  col-span-2 sm:py-2">
+    <div className="w-full col-span-2 sm:py-2">
       <img src={banner} alt="banner" className="w-full" />
     </div>
   );
