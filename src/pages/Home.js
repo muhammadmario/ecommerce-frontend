@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axiosJWT from "../app/api/axiosJWT";
-import Banner from "./Banner";
-import CardProduct from "./CardProduct";
-import CarouselsHome from "./CarouselsHome";
-import HeroCard from "./HeroCard";
+import Banner from "../components/Banner";
+import CardProduct from "../components/CardProduct";
+import CarouselsHome from "../components/CarouselsHome";
+import HeroCard from "../components/HeroCard";
 import clothes from "../assets/img/clothes.jpg";
 import kemeja from "../assets/img/kemeja.jpg";
 import jaket from "../assets/img/jaket.jpg";
@@ -17,32 +17,10 @@ import hat2 from "../assets/img/hat2.jpg";
 function Home() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const [error, setError] = useState(null);
   const { token } = useSelector((state) => state.auth);
 
-  useEffect(() => {
-    error && navigate("/login");
-  }, [error]);
-
-  // const handleClick = async () => {
-  //   try {
-  //     // console.log("aku jalan");
-  //     const response = await axiosJWT.get("users", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     });
-  //     // console.log(response);
-  //     setUsers(response.data);
-  //   } catch (error) {
-  //     console.log(error);
-  //     setError(error.response.data);
-  //   }
-  // };
-
   return (
-    <section className="w-full min-h-screen md:px-16 flex flex-col ">
+    <section className="w-full min-h-screen md:px-16 flex flex-col mt-16">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
         <Banner />
         <CarouselsHome />

@@ -8,17 +8,18 @@ function RequireAuth() {
   const navigate = useNavigate();
   const { token, isError } = useSelector((state) => state.auth);
 
-  const refresToken = async () => {
-    await dispatch(refresh(navigate));
+  const refresToken = () => {
+    dispatch(refresh(navigate));
   };
 
   useEffect(() => {
+    console.log("represh");
     refresToken();
-  }, []);
+  }, [navigate]);
 
-  useEffect(() => {
-    isError && navigate("/login");
-  }, [isError]);
+  // useEffect(() => {
+  //   isError && navigate("/login");
+  // }, [isError]);
 
   return <>{<Outlet />}</>;
 }
